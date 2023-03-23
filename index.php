@@ -136,7 +136,7 @@
         </div>
     </div>
     <div class="footer">
-      Made by <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/caeden-kidd-0957a1246/" style="color: orange">Caeden Kidd</a>, Ryan Sparago, Eesh Garg, and Max Gorman from the Coding Club at West Bloomfield High School. 
+      Made by <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/caeden-kidd-0957a1246/" style="color: orange">Caeden Kidd</a>, Ryan Sparago, Eesh Garg, and <a href="https://www.linkedin.com/in/max-gorman" target="_blank" rel="noopener noreferrer" style="color: #1F85DE;">Max Gorman</a> from the Coding Club at West Bloomfield High School. 
     </div>
     <script src="./scripts/main_script.js"></script>
   </body>
