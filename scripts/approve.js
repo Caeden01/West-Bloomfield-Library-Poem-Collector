@@ -1,14 +1,14 @@
 // Autogrow the size of the textbox to match the space of the poems.
-var auto_grow = function(b) {
+var auto_grow = (b) => {
   b.style.height = "5px";
   b.style.height = b.scrollHeight + "px";
 }
 // Submit an XHTML request to verfiy login information and to obtain database info.
-var login = function() {
+var login = () => {
   var b = new XMLHttpRequest();
   b.open("POST", "./approve.php", !0);
   b.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  b.onload = function() {
+  b.onload = () => {
     if ("wrong" == this.responseText) {
       // If the login is incorrect, inform the user.
       alert("Your login is incorrect");
@@ -18,14 +18,14 @@ var login = function() {
       document.querySelector(".approve_container").innerHTML = this.responseText;
       // For each approve button, create an onclick event.
       for (var e = document.querySelectorAll(".approve_btn"), c = 0; c < e.length; c++) {
-        e[c].onclick = function() {
+        e[c].onclick = () => {
           var a = "true", d = "";
           // When the approve button is selected, check to see if the poem has been edited.
           document.getElementById(this.id).value == document.getElementById(this.id + "org").value ? a = "false" : d = document.getElementById(this.id + "org").value;
           var f = new XMLHttpRequest();
           f.open("POST", "./approve.php", !0);
           f.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          f.onload = function() {
+          f.onload = () => {
             // If there is an issue with approving a poem, notify the user.
             "success" != this.responseText && alert("Error: could not approve poem.");
           };
@@ -39,11 +39,11 @@ var login = function() {
       e = document.querySelectorAll(".delete_btn");
       for (c = 0; c < e.length; c++) {
         // Create an onclick event for each discard button in the table.
-        e[c].onclick = function() {
+        e[c].onclick = () => {
           var a = new XMLHttpRequest();
           a.open("POST", "./approve.php", !0);
           a.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          a.onload = function() {
+          a.onload = () => {
             // If there is an issue with discarding a poem, notify the user.
             "success" != this.responseText && alert("error");
           };
@@ -52,7 +52,7 @@ var login = function() {
           this.parentElement.parentElement.remove();
         };
       }
-      setTimeout(function() {
+      setTimeout(() => {
         document.querySelector(".login_container").style.display = "none";
         document.querySelector(".approve_container").style.display = "block";
         document.querySelector(".approve_container").classList.add("animate__bounceIn");
@@ -67,13 +67,13 @@ var login = function() {
   b.send("username=" + encodeURI(document.getElementById("name").value) + "&password=" + encodeURI(document.getElementById("password").value));
 }
 // When the login button is clicked, login to the website.
-document.querySelector(".login").onclick = function() {
+document.querySelector(".login").onclick = () => {
   login();
 };
 // When enter is tapped on the keyboard, login to the website.
 var inputs = document.querySelectorAll("input");
 for(var i = 0; i < inputs.length; i++) {
-  inputs[i].onkeydown = function(e) {
+  inputs[i].onkeydown = (e) => {
     if(e.which == 13) login();
   }
 }
