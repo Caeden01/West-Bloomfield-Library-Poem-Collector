@@ -14,7 +14,7 @@
   # KEEP THIS INFORMATION SECURE
   # The database is password protected.
   # The database cannot be read or written to without the correct MySQL username and password.
-  # The MySQL credentials should be the same as the phpMyAdmin portal. 
+  # The MySQL credentials should be the same as the phpMyAdmin portal.
   $username = "root";
   $password = "62VNmTy*y9E6";
 
@@ -33,18 +33,18 @@
   if(isset($_POST["username"]) && isset($_POST["password"])) {
     # Check to make sure the login information is correct.
     if($_POST["username"] == $login_username && $_POST["password"] == $login_password) {
-      
+
       # Initiate a connection with the MySQL database.
       $conn = new mysqli($servername, $username, $password, $dbname);
       # If there is an error, output the error.
       if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
       }
-      
+
       # If an admin sends an approve request, the code below will update the database to approve the requested poem.
       if(isset($_POST["approve"])) {
         # The function, mysqli_real_escape_string, serves to avoid potential MySQL injections.
-        
+
         # The variable below stores the updated poem information.
         $content = mysqli_real_escape_string($conn, $_POST["content"]);
         # The variable below stores the approval ip information.
@@ -56,25 +56,25 @@
         # If a poem is edited, this variable stores the original, non-edited poem.
         # Only the edited copy of poems will be shown to library users.
         $org = mysqli_real_escape_string($conn, $_POST["org"]);
-        
+
         # SQL update code.
         $sql = "UPDATE poems SET approved=1, content='" . $content . "', ip_of_approver='".$display_ip."', time_of_approval='".$date."', user_agent_of_approver='".$user_agent."', edited=".$_POST['edited'].", non_edited_entry='".$org."' WHERE id='" . $_POST["approve"] . "'";
 
-        # Run the SQL script. 
+        # Run the SQL script.
         # If the script ran sucessfully, output success otherwise output error.
         if (mysqli_query($conn, $sql)) {
           echo "success";
         } else {
           echo "error";
         }
-        
-      # If an admin chooses to remove a selected poem, the code below will hide the poem. 
+
+      # If an admin chooses to remove a selected poem, the code below will hide the poem.
       } else if(isset($_POST["remove"])) {
         # The script functions by setting the approval id to negative one.
         # The code does not delete the poem but will hide it from both admin and user view.
         $sql = "UPDATE poems SET approved=-1 WHERE id='".$_POST["remove"]."'";
 
-        # Run the SQL script. 
+        # Run the SQL script.
         # If the script ran sucessfully, output success otherwise output error.
         if (mysqli_query($conn, $sql)) {
           echo "success";
@@ -89,7 +89,7 @@
         $result = $conn->query($sql);
 
         # The following code creates a table containing each awaiting poem.
-        echo "<ion-content><table>"; 
+        echo "<ion-content><table>";
         echo "<tr>";
         echo "<td>Name</td>";
         echo "<td>Email</td>";
@@ -111,7 +111,7 @@
         echo "</table>";
 
         # The MySQL connection is closed.
-        $conn->close(); 
+        $conn->close();
       }
     # If the username and password sent is incorrect, "wrong" will be printed to signify incorrect credentials.
     } else {

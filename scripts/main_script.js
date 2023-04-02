@@ -1,32 +1,34 @@
 // Define the max poem character length
 const MAX_POEM_LENGTH = 5000;
+
 // After the name and email form is submitted, hide the get_started_container and display the write_containr.
-document.querySelector("form").onsubmit = function(e) {
+document.querySelector("form").onsubmit = (e) => {
+  e.preventDefault();
   document.querySelector(".get_started_container").classList.add("animate__bounceOut");
-  setTimeout(function() {
+
+  setTimeout(() => {
     document.querySelector(".get_started_container").style.display = "none";
     document.querySelector(".write_container").classList.add("animate__bounceIn");
     document.querySelector(".write_container").style.display = "block";
   }, 650);
-  setTimeout(function() {
-    document.querySelector(".write_container").classList.remove("animate__bounceIn");
-  }, 1500);
-  e.preventDefault();
+
+  setTimeout(() => document.querySelector(".write_container").classList.remove("animate__bounceIn"), 1500);
+
   return false;
 };
+
 // When the poem is submitted, hide the write container window and display a confirmation.
-document.querySelector(".submit_poem").onclick = function() {
+document.querySelector(".submit_poem").onclick = () => {
   document.querySelector(".write_container").classList.add("animate__backOutRight");
-  setTimeout(function() {
-    document.querySelector(".write_container").style.display = "none";
-  }, 1000);
-  var xhr = new XMLHttpRequest();
+  setTimeout(() => document.querySelector(".write_container").style.display = "none", 1000);
+
+  const xhr = new XMLHttpRequest();
   xhr.open("POST", "./", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.onload = function() {
+  xhr.onload = () => {
     if(this.responseText != "error") {
-      // If the poem is submitted sucessfully, display a success window. 
-      var first_name = document.getElementById("name").value.replace(/ .*/, "");
+      // If the poem is submitted sucessfully, display a success window.
+      const first_name = document.getElementById("name").value.replace(/ .*/, "");
       document.querySelector(".poem_id").innerHTML = this.responseText;
       document.querySelector(".submit_name").innerHTML = first_name;
       document.querySelector(".success_container").style.display = "block";
@@ -39,9 +41,14 @@ document.querySelector(".submit_poem").onclick = function() {
     }
   };
   // Submit an xHTML request with the name, email,and poem content to the server.
-  xhr.send("name=" + encodeURI(document.getElementById("name").value) + "&email=" + encodeURI(document.getElementById("email").value) + "&content=" + encodeURI(document.querySelector(".textarea_poem").value));
+  xhr.send(
+    "name=" + encodeURI(document.getElementById("name").value) +
+      "&email=" + encodeURI(document.getElementById("email").value) +
+      "&content=" + encodeURI(document.querySelector(".textarea_poem").value)
+  );
 };
+
 // As text is entered into the poem textbox, update the characters remaining indicator.
-document.querySelector("textarea").oninput = function() {
+document.querySelector("textarea").oninput = () => {
   document.querySelector(".text_limit").innerHTML = MAX_POEM_LENGTH - this.value.length + " characters remaining";
 };

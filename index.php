@@ -9,7 +9,7 @@
   # KEEP THIS INFORMATION SECURE
   # The database is password protected.
   # The database cannot be read or written to without the correct MySQL username and password.
-  # The MySQL credentials should be the same as the phpMyAdmin portal. 
+  # The MySQL credentials should be the same as the phpMyAdmin portal.
   $username = "root";
   $password = "62VNmTy*y9E6";
 
@@ -27,10 +27,10 @@
   $MAX_NAME_LENGTH = 100;
   $MAX_EMAIL_LENGTH = 100;
 
-  # Max poem length is additionally referenced in script.js. 
+  # Max poem length is additionally referenced in script.js.
   # If the variable below is changed, a reference needs to be changed in script.js.
   $MAX_POEM_LENGTH = 5000;
-  
+
   # If a poem request is sent to the server, run the code in the below if block.
   if( isset($_POST["name"]) && isset($_POST["email"]) && isset($_POST["content"])) {
       # Initiate a connection with the MySQL database.
@@ -42,24 +42,24 @@
 
     # Set the time zone to eastern standard time.
     date_default_timezone_set("America/New_York");
-    
+
     # Run the submitted info through a special MySQL function to avoid MySQL injections.
     $name = mysqli_real_escape_string($conn, $_POST["name"]);
     $email = mysqli_real_escape_string($conn, $_POST["email"]);
     $content = mysqli_real_escape_string($conn, $_POST["content"]);
     # Get the date and time of the submission.
     $date = mysqli_real_escape_string($conn, date("Y-m-d h:i:sa"));
-    
+
     # Record IP and user agent information for security reasons.
-    # If a user is submitting inappropriate content, the code below can help track down or ban the user from the site.  
+    # If a user is submitting inappropriate content, the code below can help track down or ban the user from the site.
     $display_ip = mysqli_real_escape_string($conn, $ip);
     $user_agent = mysqli_real_escape_string($conn, $_SERVER["HTTP_USER_AGENT"]);
-    
+
     # Each poem is assigned an ID to make sure it can be easily referenced.
     $id = mysqli_real_escape_string($conn, uniqid());
-   
+
     # Reject any poems which exceed the maximum character length.
-    # Users should not be able to exceed the max character length without malicious actions. (I.E. inspect element) 
+    # Users should not be able to exceed the max character length without malicious actions. (I.E. inspect element)
     if(strlen($_POST["name"]) > $MAX_NAME_LENGTH) {
       die("error");
     }
@@ -69,12 +69,12 @@
     if(strlen($_POST["content"]) > $MAX_POEM_LENGTH) {
       die("error");
     }
-    
+
     # MySQL script.
     $sql = "INSERT INTO poems (name, email, content, timestamp, ip_address, user_agent, num_prints, approved, id, non_edited_entry, ip_of_approver, time_of_approval, user_agent_of_approver, edited)
     VALUES ('$name', '$email', '$content', '$date', '$display_ip', '$user_agent', 0, false, '$id', '', '', '', '', false)";
 
-    # Run the SQL script. 
+    # Run the SQL script.
     # If the script ran sucessfully, output the poem id otherwise output error.
     if ($conn->query($sql) === TRUE) {
       echo $id;
@@ -107,7 +107,7 @@
               Email <span class="required">*</span>
             </div>
             <input type="email" id="email" required maxlength="<?php echo $MAX_EMAIL_LENGTH; ?>" />
-            <!-- Remove the code segment if terms and conditions is not necessary --> 
+            <!-- Remove the code segment if terms and conditions is not necessary -->
             <br/>
             <label class="checkbox bounce">
               <input type="checkbox" required>
@@ -136,7 +136,7 @@
         </div>
     </div>
     <div class="footer">
-      Made by <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/caeden-kidd-0957a1246/" style="color: orange">Caeden Kidd</a>, Ryan Sparago, Eesh Garg, and <a href="https://www.linkedin.com/in/max-gorman" target="_blank" rel="noopener noreferrer" style="color: #1F85DE;">Max Gorman</a> from the Coding Club at West Bloomfield High School. 
+      Made by <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/caeden-kidd-0957a1246/" style="color: orange">Caeden Kidd</a>, <a target="_blank" rel="noopener noreferrer" href="https://github.com/Player01osu" style="color: white">Nate Pongtankul</a>, Ryan Sparago, Eesh Garg, and <a href="https://www.linkedin.com/in/max-gorman" target="_blank" rel="noopener noreferrer" style="color: #1F85DE;">Max Gorman</a> from the Coding Club at West Bloomfield High School.
     </div>
     <script src="./scripts/main_script.js"></script>
   </body>
