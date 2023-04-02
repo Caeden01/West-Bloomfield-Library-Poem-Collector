@@ -26,10 +26,10 @@ document.querySelector(".submit_poem").onclick = () => {
   xhr.open("POST", "./", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.onload = () => {
-    if(this.responseText != "error") {
+    if(xhr.responseText != "error") {
       // If the poem is submitted sucessfully, display a success window.
       const first_name = document.getElementById("name").value.replace(/ .*/, "");
-      document.querySelector(".poem_id").innerHTML = this.responseText;
+      document.querySelector(".poem_id").innerHTML = xhr.responseText;
       document.querySelector(".submit_name").innerHTML = first_name;
       document.querySelector(".success_container").style.display = "block";
       document.querySelector(".success_container").classList.add("animate__backInRight");
@@ -49,6 +49,7 @@ document.querySelector(".submit_poem").onclick = () => {
 };
 
 // As text is entered into the poem textbox, update the characters remaining indicator.
-document.querySelector("textarea").oninput = () => {
-  document.querySelector(".text_limit").innerHTML = MAX_POEM_LENGTH - this.value.length + " characters remaining";
+const text_area = document.querySelector("textarea");
+text_area.oninput = () => {
+  document.querySelector("text_limit").innerHTML = MAX_POEM_LENGTH - text_area.value.length + " characters remaining";
 };
