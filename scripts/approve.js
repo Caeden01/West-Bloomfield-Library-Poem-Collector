@@ -51,10 +51,10 @@ function login() {
       }
 
       // Create an array of all discard buttons.
-      const delete_btn = document.querySelectorAll(".delete_btn");
-      for (let i = 0; i < delete_btn.length; ++i) {
+      const delete_buttons = document.querySelectorAll(".delete_btn");
+      for (let i = 0; i < delete_buttons.length; ++i) {
         // Create an onclick event for each discard button in the table.
-        delete_btn[i].onclick = () => {
+        delete_buttons[i].onclick = () => {
           const approve_request = new XMLHttpRequest();
           approve_request.open("POST", "./approve.php", !0);
           approve_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
