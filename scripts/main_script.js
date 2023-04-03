@@ -51,5 +51,5 @@ document.querySelector(".submit_poem").onclick = () => {
 // As text is entered into the poem textbox, update the characters remaining indicator.
 const text_area = document.querySelector("textarea");
 text_area.oninput = () => {
-  document.querySelector("text_limit").innerHTML = MAX_POEM_LENGTH - text_area.value.length + " characters remaining";
+  document.querySelector(".text_limit").innerHTML = MAX_POEM_LENGTH - text_area.value.length + " characters remaining";
 };
