@@ -118,7 +118,7 @@ Place to manage the order of poems that will be printed.
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
     ```
 
-3. Set up a moderator account. Replace YOUR_ACCOUNT_NAME with your name and then copy and paste the script into your MySQL manager.
+3. Set up a moderator account. Replace YOUR_ACCOUNT_NAME with your name and then copy and paste the script into phpMyAdmin.
     ```sql
     INSERT INTO `users` (`username`, `parent_id`, `tier`, `banned`)
     VALUES ('YOUR_ACCOUNT_NAME', NULL, 'high', 0);
