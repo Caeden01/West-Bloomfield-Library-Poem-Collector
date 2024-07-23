@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require "../include.php";
 
 session_start();
@@ -64,10 +68,7 @@ function fetchRandomRecentPendingPoem() {
 
 // Function to update the status of a poem
 function updatePoemStatus($id, $newStatus, $approverAccountName) {
-    global $conn;
-  
-    // Create connection using MySQLi
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    global $conn, $ip;
   
     // Check connection
     if ($conn->connect_error) {
