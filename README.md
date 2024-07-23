@@ -41,7 +41,6 @@ Quick site for moderators to quickly and conveniently view and review poems that
 
 ### Poem Database
 ![Poem Database](https://github.com/user-attachments/assets/5092475c-7190-4608-a359-2116a8557ff6)
-![Poem Database](https://github.com/user-attachments/assets/626702ab-643b-44c1-ae49-99d2e5cc82a4)
 
 Detailed database for moderators to search, move, delete, and queue poems for print.
 
