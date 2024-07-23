@@ -35,7 +35,7 @@ Page to contact moderators on the site about issues they may experience.
 Page for moderators to log into.
 
 ### Poem Swiper
-![Poem Swiper](https://github.com/user-attachments/assets/f82e211c-45de-4a72-909e-91b1df1418a0)
+https://github.com/user-attachments/assets/f82e211c-45de-4a72-909e-91b1df1418a0
 
 Quick site for moderators to quickly and conveniently view and review poems that are pending approval.
 
@@ -126,9 +126,9 @@ Place to manage the order of poems that will be printed.
 
 4. Enter the file "include.php" and make the following changes:
     1. Enter your MySQL database credentials into "$username" and "$password".
-    2. Setup an authorization token — make sure it matches the one you set up here (https://github.com/Caeden01/wb-library-poem-collector-printer-drivers)
+    2. Set up an authorization token — make sure it matches the one you set up here (https://github.com/Caeden01/wb-library-poem-collector-printer-drivers)
     3. Create a QR code for the URL the project is hosted on. Include that QR code under "./images/qr_code.png". If you store at that specific path, there is no need to update the variable "website_qr_code".
-    4. Setup your library config information ("library_name", "library_logo", "library_logo_bw", "library_website", "website_qr_code", and "url_comment_path")
+    4. Set up your library config information ("library_name", "library_logo", "library_logo_bw", "library_website", "website_qr_code", and "url_comment_path")
     5. (Optional) Set up Google reCAPTCHA.
         - Set "use_captcha" to true
         - Enter your reCAPTCHA public and private keys under "captcha_public_key" and "captcha_private_key"
@@ -138,7 +138,7 @@ Place to manage the order of poems that will be printed.
     2. Navigate to the login page
     3. Sign in like you would if you had a password configured and it will set up that password automatically.
 
-6. Setup printer
+6. Set up printer
     Follow the instruction guide here: https://github.com/Caeden01/wb-library-poem-collector-printer-drivers
 
 ## TO DO
