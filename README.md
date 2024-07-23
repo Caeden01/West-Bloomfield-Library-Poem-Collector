@@ -139,6 +139,7 @@ Place to manage the order of poems that will be printed.
     3. Sign in like you would if you had a password configured and it will set up that password automatically.
 
 6. Set up printer
+   
     Follow the instruction guide here: https://github.com/Caeden01/wb-library-poem-collector-printer-drivers
 
 ## TO DO
