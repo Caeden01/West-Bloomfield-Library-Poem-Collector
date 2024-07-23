@@ -62,13 +62,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $success = "Account created successfully.";
                 $user_id = $query->insert_id;
                 
-                // Schedule an event to delete this account in 5 minutes
-                $event_query = $mysqli->prepare("
-                    CREATE EVENT delete_user_$user_id
+                // Create a unique event name using the user ID
+                $event_name = "delete_user_" . $user_id;
+
+                // Prepare the query string
+                $event_query_string = "
+                    CREATE EVENT $event_name
                     ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 15 MINUTE
                     DO DELETE FROM users WHERE id = $user_id
-                ");
-                if (!$event_query->execute()) {
+                ";
+
+                // Execute the query directly
+                if (!$mysqli->query($event_query_string)) {
                     header("HTTP/1.1 400 Bad Request");
                     die("Failed to schedule account deletion.");
                 }
