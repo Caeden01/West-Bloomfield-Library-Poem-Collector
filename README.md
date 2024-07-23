@@ -5,32 +5,33 @@ Portal for anyone to be able to send in poems to their local library.
 ## Features
 
 ### Poem Portal
-![Poem Portal](https://github.com/user-attachments/assets/fed1b1fe-77e8-45ad-bcb2-8bd36e69eba2)
+![1](https://github.com/user-attachments/assets/3d7d2d7d-2011-41ea-af2f-64278ac4c1a7)
+
 
 Place where users can type and draft up their poems for submission!
 
 ### Saved Poems
-![Saved Poems](https://github.com/user-attachments/assets/70f8761d-7c51-4f6e-8a54-7daa95abe29c)
+![2](https://github.com/user-attachments/assets/9d3bcaf9-d7a9-4c2a-a480-8ecee29bfd37)
 
 Place where users can view their poems and keep themselves updated about status updates and see comments!
 
 ### Blog
-![Blog](https://github.com/user-attachments/assets/194f15c0-b3b0-43e1-8177-4db939925b79)
+![3](https://github.com/user-attachments/assets/033f04fc-97f5-4c07-9711-5a727a1d16a5)
 
 Blog about how the team put together the project and the journey they went through to construct it
 
 ### FAQ
-![FAQ](https://github.com/user-attachments/assets/f1911871-e186-4c6b-93e4-da885fb5402e)
+![4](https://github.com/user-attachments/assets/10d8f014-d280-4a76-8ad6-50d3bbae5ef8)
 
 FAQ page to answer possible questions users may have.
 
 ### Contact Page
-![Contact Page](https://github.com/user-attachments/assets/2de728c5-f57e-4d58-8fc1-8e1945950f1b)
+![5](https://github.com/user-attachments/assets/14e3a1a7-d9a9-4756-8d95-0961a205c550)
 
 Page to contact moderators on the site about issues they may experience.
 
 ### Login Page
-![Login Page](https://github.com/user-attachments/assets/d5c69154-6aff-49b5-9437-714dd00a37a5)
+![6](https://github.com/user-attachments/assets/2c8b781a-aec7-4cd7-825f-f207f573fb3e)
 
 Page for moderators to log into.
 
@@ -40,12 +41,14 @@ https://github.com/user-attachments/assets/f82e211c-45de-4a72-909e-91b1df1418a0
 Quick site for moderators to quickly and conveniently view and review poems that are pending approval.
 
 ### Poem Database
-![Poem Database](https://github.com/user-attachments/assets/5092475c-7190-4608-a359-2116a8557ff6)
+![7](https://github.com/user-attachments/assets/a750103e-49eb-4268-81de-38fe82c67302)
+
+https://github.com/user-attachments/assets/efbd6337-3f7e-49c4-96aa-91d40d7a74ee
 
 Detailed database for moderators to search, move, delete, and queue poems for print.
 
 ### Manage Moderators
-![Manage Moderators](https://github.com/user-attachments/assets/4add147d-5a38-414e-af24-1619faadc912)
+![8](https://github.com/user-attachments/assets/988d01c5-8d85-4f7e-a62d-9c4ecb124818)
 
 Place for high-tier moderators to add additional moderators.
 
@@ -58,7 +61,8 @@ Place for high-tier moderators to add additional moderators.
 High-tier users have control over the accounts they create. At any time they can decide to ban users by navigating to "Manage Moderators" and clicking ban over the account of their choice.
 
 ### Printer Queue
-![Printer Queue](https://github.com/user-attachments/assets/a5c444dd-e187-409a-9815-b56a83c32170)
+![9](https://github.com/user-attachments/assets/cdd5a19f-ed57-4f6b-8817-d3d51f0d62d4)
+
 
 Place to manage the order of poems that will be printed.
 
