@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+}
+
+.global_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+}
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container {
+  transition: .4s ease transform;
+}
+.container:focus-within {
+  transform: scale(1.025);
+}
+@media (max-width:573px) { 
+  .container:focus-within {
+    transform: scale(1);
+  }
+} 
+@media (max-width:600px) { 
+  .comment_container {
+    padding: 30px !important;
+  }
+} 
+@media (max-width:560px) { 
+  .comment_container {
+    border-radius: 0 !important;
+  }
+} 
+.comment_container {
+  width: 100%; /* Adjust the width as needed */
+  max-width: 500px; /* Set a maximum width if necessary */
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  color: rgb(220, 220, 220);
+}
+
+input, textarea, button {
+  background: rgba(10, 10, 10, 0.5);
+  border: none;
+  padding: 10px;
+  color: rgb(180, 180, 180);
+  outline: none;
+  font-family: 'Nunito', sans-serif;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  width: 90%;
+}
+input:focus, textarea:focus {
+  outline: 2px solid rgb(180, 180, 180);
+}
+textarea {
+  padding: 15px;
+  height: 200px;
+  margin-bottom: 0px;
+  resize: none;
+}
+.required {
+  color: #de4f1f;
+}
+.login_button {
+  padding: 20px 40px 20px 40px;
+  color: rgb(200, 200, 200);
+  background: #c94923;
+  width: calc(90% + 30px);
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  transition: .4s ease background;
+  cursor: pointer;
+}
+
+.label {
+  color: rgb(180, 180, 180);
+  margin-bottom: 5px;
+}
+.hidden {
+  display: none;
+}
