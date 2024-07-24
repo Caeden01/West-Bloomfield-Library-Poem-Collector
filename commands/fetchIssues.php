@@ -38,14 +38,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"]) && $_POST["actio
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        // Create an event to delete the issue after 1 month.
-        $event_name = "delete_issue_$id";
-        $event_query = $conn->prepare("
+        // Create an event to delete the issue after 1 month
+        $event_name = $conn->real_escape_string("delete_issue_" . $id);
+        $id_safe = (int) $id; // Ensure $id is an integer to prevent SQL injection
+        
+        // Prepare the query string
+        $event_query_string = "
             CREATE EVENT IF NOT EXISTS $event_name
             ON SCHEDULE AT DATE_ADD(NOW(), INTERVAL 1 MONTH)
-            DO DELETE FROM issue_tickets WHERE id = $id
-        ");
-        $event_query->execute();
+            DO DELETE FROM issue_tickets WHERE id = $id_safe
+        ";
+        
+        // Execute the query directly
+        if (!$conn->query($event_query_string)) {
+            header("HTTP/1.1 400 Bad Request");
+            die("Failed to schedule issue deletion.");
+        }
         
         header("HTTP/1.1 200 OK");
         echo json_encode(["message" => "Ticket marked as closed and scheduled for deletion."]);
