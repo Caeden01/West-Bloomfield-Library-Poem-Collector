@@ -118,8 +118,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $query->bind_param('si', $password, $_SESSION['user_id']);
             if ($query->execute()) {
                 // Cancel the scheduled deletion event
-                $event_query = $mysqli->prepare("DROP EVENT IF EXISTS delete_user_" . $_SESSION['user_id']);
-                $event_query->execute();
+                $event_name = "delete_user_" . $_SESSION['user_id'];
+                $drop_event_query_string = "DROP EVENT IF EXISTS $event_name";
+                $mysqli->query($drop_event_query_string);
                 unset($_SESSION['set_password']);
                 $_SESSION["logged_in"] = true;
                 echo json_encode(['success' => true, 'message' => 'Password set successfully.']);
