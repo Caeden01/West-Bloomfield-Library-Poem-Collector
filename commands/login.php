@@ -118,6 +118,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $query->bind_param('si', $password, $_SESSION['user_id']);
             if ($query->execute()) {
                 // Cancel the scheduled deletion event
+                if(!is_numeric($_SESSION['user_id'])) {
+                    header("HTTP/1.1 400 Bad Request");
+                    die("Cannot execute request");
+                }
                 $event_name = "delete_user_" . $_SESSION['user_id'];
                 $drop_event_query_string = "DROP EVENT IF EXISTS $event_name";
                 $mysqli->query($drop_event_query_string);
