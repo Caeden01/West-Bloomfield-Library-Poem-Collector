@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"]) && $_POST["actio
         $event_query_string = "
             CREATE EVENT IF NOT EXISTS $event_name
             ON SCHEDULE AT DATE_ADD(NOW(), INTERVAL 1 MONTH)
-            DO DELETE FROM issue_tickets WHERE id = $$id
+            DO DELETE FROM issue_tickets WHERE id = $id
         ";
         
         // Execute the query directly
