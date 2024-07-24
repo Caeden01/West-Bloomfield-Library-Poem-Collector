@@ -39,14 +39,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"]) && $_POST["actio
 
     if ($stmt->execute()) {
         // Create an event to delete the issue after 1 month
-        $event_name = $conn->real_escape_string("delete_issue_" . $id);
-        $id_safe = (int) $id; // Ensure $id is an integer to prevent SQL injection
+        if(!is_numeric($id)) {
+            header("HTTP/1.1 400 Bad Request");
+            die("Cannot execute request");
+        }
+        $event_name = "delete_issue_" . $id;
         
         // Prepare the query string
         $event_query_string = "
             CREATE EVENT IF NOT EXISTS $event_name
             ON SCHEDULE AT DATE_ADD(NOW(), INTERVAL 1 MONTH)
-            DO DELETE FROM issue_tickets WHERE id = $id_safe
+            DO DELETE FROM issue_tickets WHERE id = $$id
         ";
         
         // Execute the query directly
