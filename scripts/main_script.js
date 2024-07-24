@@ -837,7 +837,7 @@ for(var i = 0; i < side_buttons.length; i++) {
 var change_page_hash = (hash, animation=true) => {
   const hash_dictionary = {"#home": 0, "#my-poems": 1, "#about": 2, "#faq": 3, "#contact": 4, "#login": 5, "#poem-swipper": 6, "#database": 8, "#issues": 9, "#users": 10, "#print-queue": 11};
   var tag = hash_dictionary[hash];
-  if(typeof tag !== undefined) {
+  if(typeof tag !== "undefined") {
     change_page(tag, animation);
   }
 }
