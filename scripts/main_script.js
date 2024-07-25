@@ -1313,7 +1313,6 @@ var deletePoem = async (id, e) => {
 }
 page_8.addEventListener('scroll', handleScroll);
 
-
 var buildUserHierarchy = (data) => {
   // Create a map to store nodes by their id
   const nodes = new Map();
@@ -1448,11 +1447,11 @@ var createIssuesTableHTML = (issues) => {
     // Add rows to table
     issues.forEach(issue => {
         table += `<tr id="issue-${issue.id}">
-            <td>${issue.id}</td>
-            <td>${issue.name}</td>
-            <td>${issue.email}</td>
-            <td>${issue.subject}</td>
-            <td class='issue'>${issue.issue.replace(/\n/g, '<br>')}</td>
+            <td>${convertToSpecialChars(issue.id)}</td>
+            <td>${convertToSpecialChars(issue.name)}</td>
+            <td>${convertToSpecialChars(issue.email)}</td>
+            <td>${convertToSpecialChars(issue.subject)}</td>
+            <td class='issue'>${convertToSpecialChars(issue.issue).replace(/\n/g, '<br>')}</td>
             ${(issue_status == "open") ? `<td><button class="generic_button smaller_button" onclick="closeIssue(${issue.id}, this)">Close</button></td>` : '' }
         </tr>`;
     });
