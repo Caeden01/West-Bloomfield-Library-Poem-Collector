@@ -1447,7 +1447,7 @@ var createIssuesTableHTML = (issues) => {
     // Add rows to table
     issues.forEach(issue => {
         table += `<tr id="issue-${issue.id}">
-            <td>${convertToSpecialChars(issue.id)}</td>
+            <td>${issue.id}</td>
             <td>${convertToSpecialChars(issue.name)}</td>
             <td>${convertToSpecialChars(issue.email)}</td>
             <td>${convertToSpecialChars(issue.subject)}</td>
