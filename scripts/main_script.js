@@ -1562,12 +1562,11 @@ var displayQueue = (queue) => {
       listItem.innerHTML = `<b>#${item.queue_number})</b> <a href="#database" style="color: orange" onclick="searchDatabase('${item.poem_id}', false)"><b>${convertToSpecialChars(item.title)}</b></a> written by <b><a href="#database" style="color: lightblue" onclick="searchDatabase(this.innerText, false)">${convertToSpecialChars(item.author)}</a></b> — added by ${item.added_by}
                             ${(Number(item.queue_number) == 1) ? '' : `<button style="padding: 0 5px;" class="symbols_font" onclick="moveUpQueue(${item.id}, this)">⮝</button>`}
                             ${(Number(item.queue_number) == queue.length) ? '' : `<button style="padding: 0 5px;" class="symbols_font" onclick="moveDownQueue(${item.id}, this)">⮟</button>`}
-                            ${(Number(item.queue_number) == 1) ? '' : `<button style="padding: 0 5px;" class="symbols_font" onclick="moveTopQueue(${item.id}, this)">⬤</button>`}
+                            ${(Number(item.queue_number) == 1) ? '' : `<button style="padding: 2px 5px;" onclick="moveTopQueue(${item.id}, this)">#1</button>`}
                             <button class="delete" style="padding: 0 5px;" onclick="deleteQueue(${item.id}, this)">x</button>
                             ${(Number(item.queue_number) == 1) ? '<button style="padding: 0 5px; pointer-events: none; visibility: hidden;" class="symbols_font">⮝</button>' : ''}
                             ${(Number(item.queue_number) == queue.length) ? '<button style="padding: 0 5px; pointer-events: none; visibility: hidden;" class="symbols_font">⮟</button>' : ''}
-                            ${(Number(item.queue_number) == 1) ? `<button style="padding: 0 5px; pointer-events: none; visibility: hidden;" class="symbols_font">⬤</button>` : ''}
-                            `;
+                            ${(Number(item.queue_number) == 1) ? `<button style="padding: 2px 5px; pointer-events: none; visibility: hidden;">#1</button>` : ''}`;
 
       // Append the list item to the list container
       listContainer.appendChild(listItem);
