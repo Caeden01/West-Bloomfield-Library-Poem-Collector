@@ -1559,7 +1559,7 @@ var displayQueue = (queue) => {
 
       // Set the content of the list item
       // Items are repeated to keep the width of the container constant
-      listItem.innerHTML = `<b>#${item.queue_number})</b> <a href="#database" style="color: orange" onclick="searchDatabase('${item.poem_id}', false)"><b>${item.title}</b></a> written by <a href="#database" style="color: lightblue" onclick="searchDatabase('${item.author}', false)"><b>${item.author}</b></a> — added by ${item.added_by}
+      listItem.innerHTML = `<b>#${item.queue_number})</b> <a href="#database" style="color: orange" onclick="searchDatabase('${item.poem_id}', false)"><b>${convertToSpecialChars(item.title)}</b></a> written by <b><a href="#database" style="color: lightblue" onclick="searchDatabase(this.innerText, false)">${convertToSpecialChars(item.author)}</a></b> — added by ${item.added_by}
                             ${(Number(item.queue_number) == 1) ? '' : `<button style="padding: 0 5px;" class="symbols_font" onclick="moveUpQueue(${item.id}, this)">⮝</button>`}
                             ${(Number(item.queue_number) == queue.length) ? '' : `<button style="padding: 0 5px;" class="symbols_font" onclick="moveDownQueue(${item.id}, this)">⮟</button>`}
                             ${(Number(item.queue_number) == 1) ? '' : `<button style="padding: 0 5px;" class="symbols_font" onclick="moveTopQueue(${item.id}, this)">⬤</button>`}
