@@ -19,15 +19,17 @@ function login() {
       document.querySelector(".login_container").classList.add("animate__bounceOut");
       document.querySelector(".approve_container").innerHTML = login_request.responseText;
 
+      console.log(login_request);
+
       // For each approve button, create an onclick event.
       const approve_buttons = document.querySelectorAll(".approve_btn");
       for (let i = 0; i < approve_buttons.length; ++i) {
         const approve_button = approve_buttons[i];
-        approve_button.onclick = () => {
+        approve_button.onclick = function() {
           let edited = true, org = "";
           // When the approve button is selected, check to see if the poem has been edited.
-          if (document.getElementById(login_request.id).value == document.getElementById(login_request.id + "org").value) edited = false;
-          else org = document.getElementById(approve_button.id + "org").value;
+          if (document.getElementById(this.id).value == document.getElementById(this.id + "org").value) edited = false;
+          else org = document.getElementById(this.id + "org").value;
 
           const approve_request = new XMLHttpRequest();
           approve_request.open("POST", "./approve.php", !0);
@@ -41,8 +43,8 @@ function login() {
           approve_request.send(
             "username=" + encodeURI(document.getElementById("name").value) +
               "&password=" + encodeURI(document.getElementById("password").value) +
-              "&approve=" + approve_button.id +
-              "&content=" + encodeURI(document.getElementById(approve_button.id).value) +
+              "&approve=" + this.id +
+              "&content=" + encodeURI(document.getElementById(this.id).value) +
               "&edited=" + edited +
               "&org=" + org
           );
@@ -55,22 +57,21 @@ function login() {
       const delete_buttons = document.querySelectorAll(".delete_btn");
       for (let i = 0; i < delete_buttons.length; ++i) {
         // Create an onclick event for each discard button in the table.
-        const delete_button = delete_button[i]
-        delete_button.onclick = () => {
+        delete_buttons[i].onclick = function() {
           const approve_request = new XMLHttpRequest();
           approve_request.open("POST", "./approve.php", !0);
           approve_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
           approve_request.onload = () => {
             // If there is an issue with discarding a poem, notify the user.
-            "success" != delete_button.responseText && alert("error");
+            "success" != approve_request.responseText && alert("error");
           };
           approve_request.send(
             "username=" + encodeURI(document.getElementById("name").value) +
               "&password=" + encodeURI(document.getElementById("password").value) +
-              "&remove=" + delete_button.id
+              "&remove=" + this.id
           );
           // Hide the poem from the table listing.
-          delete_button.parentElement.parentElement.remove();
+          this.parentElement.parentElement.remove();
         };
       }
 
