@@ -40,7 +40,7 @@
         $poem_id = $rows["id"];
         
         # Increment the number of prints variable in the database. 
-        $sql_2 = "UPDATE poems SET num_prints = num_prints + 1  WHERE id='".$poem_id."'";
+        $sql_2 = "UPDATE poems SET num_prints = num_prints + 1  WHERE id='".mysqli_real_escape_string($conn, $poem_id)."'";
         mysqli_query($conn, $sql_2);
       }
   }
