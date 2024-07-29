@@ -72,7 +72,7 @@
       } else if(isset($_POST["remove"])) {
         # The script functions by setting the approval id to negative one.
         # The code does not delete the poem but will hide it from both admin and user view.
-        $sql = "UPDATE poems SET approved=-1 WHERE id='".$_POST["remove"]."'";
+        $sql = "UPDATE poems SET approved=-1 WHERE id='".mysqli_real_escape_string($conn, $_POST["remove"])."'";
 
         # Run the SQL script.
         # If the script ran sucessfully, output success otherwise output error.
