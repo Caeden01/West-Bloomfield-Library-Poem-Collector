@@ -212,6 +212,16 @@ document.querySelector(".submit_poem").onclick = () => {
 };
 // Content is set to zoom out 20% after the screen with is less than 430.
 // Chrome doesn't recgonize this change in scrollHeight for some reason so it's being manually adjusted here.
+// Also if the OS is set to zoom the code scrollHeight also doesn't change so that's being accounted for too.
+
+const randomElement = document.createElement('div');
+randomElement.style.width = '100vh';
+document.body.appendChild(randomElement);
+
+const widthInPixels = randomElement.offsetWidth;
+
+
+
 var multiplier = 1;
 const checkMultiplier = () => multiplier = (window.innerWidth < 430) ? 0.80 : 1;
 checkMultiplier();
@@ -808,13 +818,21 @@ var change_page = (tag, animation=true) => {
     inAnimation = true;
   
     var page_old = document.querySelector(".page_" + current_window_id);
+    page_old.style.height = page_old.getBoundingClientRect().height + "px";
+    page_old.style.position = "absolute";
     queue_new_animation(page_old, first_animation, 1100).then( () => {
       hide(page_old);
+      page_old.style.position = "static";
+      page_old.style.height = "100%";
     });
     var page_new = document.querySelector(".page_" + new_window_id);
     page_new.style.display = "flex";
+    page_new.style.height = page_new.getBoundingClientRect().height + "px";
+    page_new.style.position = "absolute";
     queue_new_animation(page_new, second_animation, 1100).then( () => {
       inAnimation = false;
+      page_new.style.position = "static";
+      page_new.style.height = "100%";
     });
   } else {
     var page_old = document.querySelector(".page_" + current_window_id);
