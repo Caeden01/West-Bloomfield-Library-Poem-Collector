@@ -29,7 +29,7 @@
   # Path of QR Code that redirects to your hosted version of this poem collector site.
   define("website_qr_code", "./images/qr_code.png");
   # Path of hosted comment.php file. Please leave "?id="!
-  define("url_comment_path", "REPLACE_WITH_YOUR_PROJECT_URL_PATH/comment.php?id=");
+  define("url_comment_path", "https://REPLACE_WITH_YOUR_PROJECT_URL_PATH/comment.php?id=");
   # Quality of QR code generation - default set to low.
   define("qr_code_quality", "l");
 
